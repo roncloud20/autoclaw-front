@@ -1,8 +1,44 @@
-import React from "react";
+import { useState } from "react";
 import Header from "../components/Header";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export default function Register() {
+  const API_BASE_URL =
+    import.meta.env.REACT_APP_API_URL || "http://autoclaw-back.test";
+  // State to hold form data
+  const [formData, setFormData] = useState({
+    firstname: "",
+    surname: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: "",
+    role: "user",
+  });
+  const [errors, setErrors] = useState({});
+
+  // Handle form input changes
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // console.table(formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post(`${API_BASE_URL}/api/register`, formData);
+      console.log(res.data);
+    } catch (errors) {
+      console.log(errors?.response?.data?.message);
+      console.table(errors?.response?.data?.errors);
+      setErrors(errors?.response?.data?.errors);
+    }
+    console.table(errors);
+  };
   return (
     <>
       <Header />
@@ -19,7 +55,12 @@ export default function Register() {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form action="#" method="POST" className="space-y-6">
+          <form
+            action="#"
+            method="POST"
+            className="space-y-6"
+            onSubmit={handleSubmit}
+          >
             {/* Firstname */}
             <div>
               <label
@@ -33,11 +74,14 @@ export default function Register() {
                   id="firstname"
                   name="firstname"
                   type="text"
-                  required
+                  //   required
                   autoComplete="firstname"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  value={formData.firstname}
+                  onChange={handleChange}
+                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.firstname ? "outline-red-500" : "outline-gray-300"}`}
                 />
               </div>
+              <span className="text-red-500 italic">{errors.firstname}</span>
             </div>
 
             {/* Surname */}
@@ -53,13 +97,15 @@ export default function Register() {
                   id="surname"
                   name="surname"
                   type="text"
-                  required
+                  //   required
                   autoComplete="surname"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  value={formData.surname}
+                  onChange={handleChange}
+                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.surname ? "outline-red-500" : "outline-gray-300"}`}
                 />
               </div>
+              <span className="text-red-500 italic">{errors.surname}</span>
             </div>
-
 
             {/* Email Address */}
             <div>
@@ -73,12 +119,15 @@ export default function Register() {
                 <input
                   id="email"
                   name="email"
-                  type="email"
-                  required
+                  type="text"
+                  //   required
                   autoComplete="email"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.email ? "outline-red-500" : "outline-gray-300"}`}
                 />
               </div>
+              <span className="text-red-500 italic">{errors.email}</span>
             </div>
 
             {/* Phone */}
@@ -94,11 +143,14 @@ export default function Register() {
                   id="phone"
                   name="phone"
                   type="tel"
-                  required
+                  //   required
                   autoComplete="phone"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.phone ? "outline-red-500" : "outline-gray-300"}`}
                 />
               </div>
+              <span className="text-red-500 italic">{errors.phone}</span>
             </div>
 
             {/* Password */}
@@ -110,41 +162,44 @@ export default function Register() {
                 >
                   Password
                 </label>
-               
               </div>
               <div className="mt-2">
                 <input
                   id="password"
                   name="password"
                   type="password"
-                  required
+                  //   required
                   autoComplete="current-password"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500" : "outline-gray-300"}`}
                 />
               </div>
+              <span className="text-red-500 italic">{errors.password}</span>
             </div>
 
             {/* Confirm Password */}
             <div>
               <div className="flex items-center justify-between">
                 <label
-                  htmlFor="confirm-password"
+                  htmlFor="confirmPassword"
                   className="block text-sm/6 font-medium text-gray-900"
                 >
                   Confirm Password
                 </label>
-               
               </div>
               <div className="mt-2">
                 <input
-                  id="confirm-password"
-                  name="confirm-password"
+                  id="confirmPassword"
+                  name="confirmPassword"
                   type="password"
-                  required
-                  autoComplete="confirm-password"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  //   required
+                  autoComplete="confirmPassword"
+                  value={formData.confirmPassword}
+                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500" : "outline-gray-300"}`}
                 />
               </div>
+              <span className="text-red-500 italic">{errors.password}</span>
             </div>
 
             {/* Role */}
@@ -159,7 +214,8 @@ export default function Register() {
                 <select
                   id="role"
                   name="role"
-                  required
+                  //   required
+                  onChange={handleChange}
                   className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 >
                   <option value="user">User</option>
@@ -168,6 +224,7 @@ export default function Register() {
               </div>
             </div>
 
+            {/* Button */}
             <div>
               <button
                 type="submit"
@@ -181,7 +238,7 @@ export default function Register() {
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Already have an account?{" "}
             <Link
-              to='/login'
+              to="/login"
               className="font-semibold text-indigo-600 hover:text-indigo-500"
             >
               Click here to sign in
