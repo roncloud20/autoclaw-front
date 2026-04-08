@@ -5,9 +5,9 @@ const About = () => {
   return (
     <>
       <Header />
-      <div className="bg-gray-100">
+      <div className="bg-white dark:bg-gray-900">
         {/* HERO SECTION */}
-        <section className="text-center py-20 px-6 bg-gradient-to-r from-[#0f172a] via-[#1e293b] to-[#312e81] text-white">
+        <section className="text-center py-20 px-6 bg-gradient-to-r from-slate-800 via-slate-700 to-indigo-900 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-950 text-white">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
             About Us
           </h1>
@@ -21,8 +21,10 @@ const About = () => {
         {/* WHO WE ARE */}
         <section className="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold text-gray-800">Who We Are</h2>
-            <p className="mt-4 text-gray-600 leading-relaxed">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
+              Who We Are
+            </h2>
+            <p className="mt-4 text-gray-600 dark:text-gray-400 leading-relaxed">
               At Autoclaw, we focus solely on auto parts. We partner with
               trusted suppliers to ensure every product meets high standards of
               quality and durability. Our mission is to make buying auto parts
@@ -40,7 +42,7 @@ const About = () => {
         </section>
 
         {/* STATS */}
-        <section className="py-16 px-6 bg-white">
+        <section className="py-16 px-6 bg-gray-50 dark:bg-gray-800">
           <div className="max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center">
             <div className="p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-indigo-700">
               <h3 className="text-3xl font-bold text-indigo-700">500+</h3>
@@ -52,46 +54,52 @@ const About = () => {
               <p className="text-gray-500 mt-2">Satisfied Customers</p>
             </div>
 
-            <div className="p-8 rounded-xl shadow-md hover:shadow-xl transition duration-300 border-t-4 border-purple-700">
-              <h3 className="text-3xl font-bold text-purple-700">24/7</h3>
-              <p className="text-gray-500 mt-2">Customer Support</p>
+            <div className="p-8 rounded-xl shadow-md dark:shadow-lg dark:shadow-gray-700/30 hover:shadow-xl dark:hover:shadow-gray-700/50 transition duration-300 border-t-4 border-purple-700 bg-white dark:bg-gray-700">
+              <h3 className="text-3xl font-bold text-purple-700 dark:text-purple-400">
+                24/7
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 mt-2">
+                Customer Support
+              </p>
             </div>
           </div>
         </section>
 
         {/* MISSION / VISION / VALUES */}
         <section className="py-16 px-6 max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          <div className="p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <h3 className="font-semibold text-lg text-indigo-700">
+          <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-lg dark:shadow-gray-700/30 hover:shadow-xl dark:hover:shadow-gray-700/50 hover:-translate-y-2 transition duration-300">
+            <h3 className="font-semibold text-lg text-indigo-700 dark:text-indigo-400">
               Our Mission
             </h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 dark:text-gray-300 mt-2">
               To simplify the way Nigerians buy genuine auto parts by providing
               a trusted, reliable, and easy-to-use platform.
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <h3 className="font-semibold text-lg text-orange-500">
+          <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-lg dark:shadow-gray-700/30 hover:shadow-xl dark:hover:shadow-gray-700/50 hover:-translate-y-2 transition duration-300">
+            <h3 className="font-semibold text-lg text-orange-500 dark:text-orange-400">
               Our Vision
             </h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 dark:text-gray-300 mt-2">
               To be the leading online marketplace in Nigeria for all automotive
               parts and accessories.
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-xl shadow-md hover:shadow-xl hover:-translate-y-2 transition duration-300">
-            <h3 className="font-semibold text-lg text-purple-700">
+          <div className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-md dark:shadow-lg dark:shadow-gray-700/30 hover:shadow-xl dark:hover:shadow-gray-700/50 hover:-translate-y-2 transition duration-300">
+            <h3 className="font-semibold text-lg text-purple-700 dark:text-purple-400">
               Our Values
             </h3>
-            <p className="text-gray-600 mt-2">
+            <p className="text-gray-600 dark:text-gray-300 mt-2">
               Trust Quality | Customer First | Reliability | Innovation
             </p>
           </div>
         </section>
 
         {/* CALL TO ACTION */}
+        <section className="bg-gradient-to-r from-slate-800 via-slate-700 to-purple-900 dark:from-gray-900 dark:via-gray-800 dark:to-purple-950 text-white text-center py-16 px-6">
+          <h2 className="text-3xl font-bold">Ready to explore our products?</h2>
         <section className="bg-[#0f172a] text-white text-center py-16 px-6">
           <h2 className="text-3xl font-bold">
             Ready to explore our products?

@@ -1,32 +1,24 @@
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import Category from "./Category";
+import Products from "./Products";
 
 function Home() {
   return (
-    <>
+    <div className="min-h-screen bg-white dark:bg-gray-900">
       <Header />
-      <div class="p-6 text-center">
-      <h1 class="text-4xl font-bold">Auto Claw</h1>
+      <main className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+        <Products quantity={8} />
 
-      <p class="text-gray-600 mt-2">
-        Your trusted automobile spare parts store.
-      </p>
-
-      <h2 class="text-2xl font-semibold mt-6">
-        Available Parts
-      </h2>
-
-      <ul class="mt-3 space-y-2">
-        <li>Car Engines</li>
-        <li>Brake Pads</li>
-        <li>Car Batteries</li>
-        <li>Tires & Rims</li>
-      </ul>
-
-      <button class="mt-6 bg-blue-600 text-white px-4 py-2 rounded">
-        Shop Now
-      </button>
+        <Link
+          to="/products"
+          className="inline-block bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-600 dark:hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded m-3 mt-6"
+        >
+          View more 👉
+        </Link>
+        <Category />
+      </main>
     </div>
-    </>
   );
 }
 

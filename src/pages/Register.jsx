@@ -42,14 +42,14 @@ export default function Register() {
   return (
     <>
       <Header />
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 bg-white dark:bg-gray-900">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt="Your Company"
             src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
             className="mx-auto h-10 w-auto"
           />
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900 dark:text-white">
             Create an account
           </h2>
         </div>
@@ -65,7 +65,7 @@ export default function Register() {
             <div>
               <label
                 htmlFor="firstname"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium text-gray-900 dark:text-white"
               >
                 Firstname
               </label>
@@ -78,17 +78,19 @@ export default function Register() {
                   autoComplete="firstname"
                   value={formData.firstname}
                   onChange={handleChange}
-                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.firstname ? "outline-red-500" : "outline-gray-300"}`}
+                  className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.firstname ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
               </div>
-              <span className="text-red-500 italic">{errors.firstname}</span>
+              <span className="text-red-500 dark:text-red-400 italic">
+                {errors.firstname}
+              </span>
             </div>
 
             {/* Surname */}
             <div>
               <label
                 htmlFor="surname"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium text-gray-900 dark:text-white"
               >
                 Surname
               </label>
@@ -101,17 +103,19 @@ export default function Register() {
                   autoComplete="surname"
                   value={formData.surname}
                   onChange={handleChange}
-                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.surname ? "outline-red-500" : "outline-gray-300"}`}
+                  className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.surname ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
               </div>
-              <span className="text-red-500 italic">{errors.surname}</span>
+              <span className="text-red-500 dark:text-red-400 italic">
+                {errors.surname}
+              </span>
             </div>
 
             {/* Email Address */}
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium text-gray-900 dark:text-white"
               >
                 Email address
               </label>
@@ -124,17 +128,19 @@ export default function Register() {
                   autoComplete="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.email ? "outline-red-500" : "outline-gray-300"}`}
+                  className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.email ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
               </div>
-              <span className="text-red-500 italic">{errors.email}</span>
+              <span className="text-red-500 dark:text-red-400 italic">
+                {errors.email}
+              </span>
             </div>
 
             {/* Phone */}
             <div>
               <label
                 htmlFor="phone"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium text-gray-900 dark:text-white"
               >
                 Phone Number
               </label>
@@ -147,10 +153,12 @@ export default function Register() {
                   autoComplete="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.phone ? "outline-red-500" : "outline-gray-300"}`}
+                  className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.phone ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
               </div>
-              <span className="text-red-500 italic">{errors.phone}</span>
+              <span className="text-red-500 dark:text-red-400 italic">
+                {errors.phone}
+              </span>
             </div>
 
             {/* Password */}
@@ -158,7 +166,7 @@ export default function Register() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="password"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium text-gray-900 dark:text-white"
                 >
                   Password
                 </label>
@@ -172,10 +180,12 @@ export default function Register() {
                   autoComplete="current-password"
                   value={formData.password}
                   onChange={handleChange}
-                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500" : "outline-gray-300"}`}
+                  className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
               </div>
-              <span className="text-red-500 italic">{errors.password}</span>
+              <span className="text-red-500 dark:text-red-400 italic">
+                {errors.password}
+              </span>
             </div>
 
             {/* Confirm Password */}
@@ -183,7 +193,7 @@ export default function Register() {
               <div className="flex items-center justify-between">
                 <label
                   htmlFor="confirmPassword"
-                  className="block text-sm/6 font-medium text-gray-900"
+                  className="block text-sm/6 font-medium text-gray-900 dark:text-white"
                 >
                   Confirm Password
                 </label>
@@ -196,17 +206,19 @@ export default function Register() {
                   //   required
                   autoComplete="confirmPassword"
                   value={formData.confirmPassword}
-                  className={`block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500" : "outline-gray-300"}`}
+                  className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
               </div>
-              <span className="text-red-500 italic">{errors.password}</span>
+              <span className="text-red-500 dark:text-red-400 italic">
+                {errors.password}
+              </span>
             </div>
 
             {/* Role */}
             <div>
               <label
                 htmlFor="role"
-                className="block text-sm/6 font-medium text-gray-900"
+                className="block text-sm/6 font-medium text-gray-900 dark:text-white"
               >
                 Select a role
               </label>
@@ -216,7 +228,7 @@ export default function Register() {
                   name="role"
                   //   required
                   onChange={handleChange}
-                  className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                  className="block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-600 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
                 >
                   <option value="user">User</option>
                   <option value="vendor">Vendor</option>
@@ -235,7 +247,7 @@ export default function Register() {
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
+          <p className="mt-10 text-center text-sm/6 text-gray-600 dark:text-gray-400">
             Already have an account?{" "}
             <Link
               to="/login"
