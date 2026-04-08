@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const About = () => {
   return (
@@ -99,6 +100,10 @@ const About = () => {
         {/* CALL TO ACTION */}
         <section className="bg-gradient-to-r from-slate-800 via-slate-700 to-purple-900 dark:from-gray-900 dark:via-gray-800 dark:to-purple-950 text-white text-center py-16 px-6">
           <h2 className="text-3xl font-bold">Ready to explore our products?</h2>
+        <section className="bg-[#0f172a] text-white text-center py-16 px-6">
+          <h2 className="text-3xl font-bold">
+            Ready to explore our products?
+          </h2>
           <p className="mt-3 text-gray-300">
             Ready to find the perfect auto parts for your vehicle? Browse our
             extensive selection and shop with confidence today.
@@ -109,6 +114,7 @@ const About = () => {
           </button>
         </section>
       </div>
+      <Footer />
     </>
   );
 };
