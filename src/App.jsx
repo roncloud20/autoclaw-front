@@ -7,6 +7,7 @@ import Products from "./pages/Products";
 import VerifyEmail from "./pages/VerifyEmail";
 import ProductDetail from "./pages/ProductDetail";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Dashboard from "./pages/Admin/Dashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/products" element={<Products />} />
           <Route path="/verify-email" element={<VerifyEmail />} />
           <Route path="/product/:id" element={<ProductDetail />} />
+          <Route path="/admin/dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
