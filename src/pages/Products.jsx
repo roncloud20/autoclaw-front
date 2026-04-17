@@ -1,7 +1,6 @@
 import ProductCard from "../components/ProductCard";
 import productsData from "../assets/products.json";
 import Header from "../components/Header";
-import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Products = ({ quantity }) => {
@@ -10,9 +9,9 @@ const Products = ({ quantity }) => {
 
   return (
     <>
-      {useLocation().pathname === "/products" && <Header />}
+      <Header />
 
-      <section className="space-y-8 mt-5 flex flex-col items-center">
+      <section className="space-y-8 mt-5 flex flex-col items-center" id="products">
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
             Products
@@ -23,7 +22,7 @@ const Products = ({ quantity }) => {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 items-stretch">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {products.map(
             ({
               id,

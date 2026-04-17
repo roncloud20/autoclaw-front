@@ -1,13 +1,17 @@
 import { useState } from "react";
 import Header from "../components/Header";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/24/outline";
+import toast from "react-hot-toast";
 
 export default function Register() {
-  const API_BASE_URL = import.meta.env.REACT_APP_API_URL || "http://autoclaw-back.test";
+  const navigate = useNavigate();
+  const API_BASE_URL =
+    import.meta.env.REACT_APP_API_URL || "http://autoclaw-back.test";
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   // State to hold form data
   const [formData, setFormData] = useState({
     firstname: "",
@@ -31,13 +35,21 @@ export default function Register() {
   // console.table(formData);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setErrors({});
     try {
       const res = await axios.post(`${API_BASE_URL}/api/register`, formData);
-      console.log(res.data);
+      toast.success(
+        "Registration successful! Please check your email for verification.",
+      );
+      if (res.status === 200 || res.status === 201) {
+        navigate("/login");
+      }
     } catch (errors) {
-      console.log(errors?.response?.data?.message);
-      console.table(errors?.response?.data?.errors);
       setErrors(errors?.response?.data?.errors);
+      toast.error("Registration failed. Please check the form for errors.");
+    } finally {
+      setIsLoading(false);
     }
     console.table(errors);
   };
@@ -184,8 +196,15 @@ export default function Register() {
                   onChange={handleChange}
                   className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
-                <span onClick={()=> setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400">
-                  {showPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400"
+                >
+                  {showPassword ? (
+                    <EyeSlashIcon className="h-5 w-5" />
+                  ) : (
+                    <EyeIcon className="h-5 w-5" />
+                  )}
                 </span>
               </div>
               <span className="text-red-500 dark:text-red-400 italic">
@@ -214,8 +233,15 @@ export default function Register() {
                   onChange={handleChange}
                   className={`block w-full rounded-md bg-white dark:bg-gray-800 px-3 py-1.5 text-base text-gray-900 dark:text-white outline-1 -outline-offset-1 placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6 ${errors.password ? "outline-red-500 dark:outline-red-400" : "outline-gray-300 dark:outline-gray-600"}`}
                 />
-                <span onClick={()=> setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400">
-                  {showConfirmPassword ? <EyeSlashIcon className="h-5 w-5" /> : <EyeIcon className="h-5 w-5" />}
+                <span
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-400"
+                >
+                  {showConfirmPassword ? (
+                    <EyeSlashIcon className="h-5 w-5" />
+                  ) : (
+                    <EyeIcon className="h-5 w-5" />
+                  )}
                 </span>
               </div>
               <span className="text-red-500 dark:text-red-400 italic">
@@ -251,7 +277,7 @@ export default function Register() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Create Account
+                {isLoading ? "Registering..." : "Sign up"}
               </button>
             </div>
           </form>

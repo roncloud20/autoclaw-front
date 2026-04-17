@@ -13,16 +13,14 @@ const ProductCard = ({
   verified,
 }) => {
   return (
-    <Link
-      to={`/product/${id}`}
-      className="transition duration-300 ease-in hover:scale-105 hover:z-10 h-full"
-    >
-      <article className="group overflow-hidden rounded-3xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-sm dark:shadow-none transition duration-200 hover:shadow-md hover:border-indigo-500 hover:ring-1 hover:ring-indigo-200 dark:hover:border-indigo-400 dark:hover:shadow-gray-700/50 dark:hover:ring-indigo-500 h-full flex flex-col">
-        <div className="aspect-square bg-gray-100 dark:bg-gray-700 p-4 text-gray-500 dark:text-gray-400">
+    <Link to={`/product/${id}`} className="h-full block group">
+      <article className="overflow-hidden rounded-3xl border-2 border-gray-300 dark:border-gray-700  bg-white dark:bg-gray-800 shadow-sm dark:shadow-none h-full flex flex-col md:transition-all md:duration-300 md:ease-out md:hover:shadow-xl md:hover:-translate-y-2 md:hover:border-indigo-500/50 ">
+        <div className="aspect-square bg-gray-100 dark:bg-gray-700 p-4 text-gray-500 dark:text-gray-400 overflow-hidden">
           <img
-            className="h-full w-full object-cover"
-            src={Placeholder}
+            className="h-full w-full object-contain md:transition-transform md:duration-500 md:group-hover:scale-110" 
+            src={ Placeholder || product_image}
             alt={name}
+            loading="lazy" 
           />
         </div>
 

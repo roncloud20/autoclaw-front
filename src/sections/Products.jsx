@@ -9,8 +9,6 @@ const Products = ({ quantity }) => {
 
   return (
     <>
-      {useLocation().pathname === "/products" && <Header />}
-
       <section
         id="products"
         className="space-y-8 flex flex-col items-center pt-30"
@@ -25,7 +23,7 @@ const Products = ({ quantity }) => {
           </p>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 items-stretch">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 items">
           {products.map(
             ({
               id,
