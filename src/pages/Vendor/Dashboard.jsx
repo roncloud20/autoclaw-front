@@ -3,20 +3,20 @@ import SidebarLayout from '../../components/SidebarLayout'
 import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
+  const [isAuthorized, setIsAuthorized] = useState(false);
   const navigate = useNavigate();
-  const [isAuthorized, setIsAuthorized] = useState(false)
   const user = JSON.parse(localStorage.getItem('user'));
   useEffect(() => {
-    if (!user || user.role !== 'admin') {
+    if (!user || user.role !== 'vendor') {
       return navigate('/login');
     } else {
       setIsAuthorized(true);
     }
   }, [user, navigate]);
-
   if (!isAuthorized) {
     return null; 
   }
+
   return (
     <>
         <SidebarLayout />

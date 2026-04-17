@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Category from "../sections/Category";
 import Products from "../sections/Products";
 import Hero from "../sections/Hero";
@@ -16,6 +17,7 @@ function Home() {
         
         <Category />
       </main>
+      <Footer />
     </div>
   );
 }

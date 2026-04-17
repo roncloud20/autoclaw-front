@@ -9,7 +9,7 @@ export default function Register() {
   const API_BASE_URL = import.meta.env.REACT_APP_API_URL || "http://autoclaw-back.test";
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  let currentStatus = null;
+  const [isLoading, setIsLoading] = useState(false);
   // State to hold form data
   const [formData, setFormData] = useState({
     firstname: "",
@@ -33,17 +33,19 @@ export default function Register() {
   // console.table(formData);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    setErrors({});
     try {
       const res = await axios.post(`${API_BASE_URL}/api/register`, formData);
-      currentStatus = res.status;
+      toast.success("Registration successful! Please check your email for verification.");
+      if (res.status === 200) {
+        navigate("/login");
+      }
     } catch (errors) {
       setErrors(errors?.response?.data?.errors);
+      toast.error("Registration failed. Please check the form for errors.");
     } finally {
-      if (currentStatus === 201 || currentStatus === 200) {
-        toast.success("Registration successful! Please check your email for verification.");
-      } else {
-        toast.error("Registration failed. Please check the form for errors.");
-      }
+      setIsLoading(false);
     }
     console.table(errors);
   };
@@ -257,7 +259,7 @@ export default function Register() {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Create Account
+                {isLoading ? "Registering..." : "Sign up"}
               </button>
             </div>
           </form>

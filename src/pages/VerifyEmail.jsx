@@ -12,7 +12,6 @@ export default function VerifyEmail() {
   const email = SearchParams.get("email");
   const [token, setToken] = useState(SearchParams.get("token"));
   const navigate = useNavigate();
-  // console.log(email, token);
   useEffect(() => {
     if (email === null) {
       navigate("/register");
@@ -26,9 +25,8 @@ export default function VerifyEmail() {
         email,
         token,
       });
-      console.log(response.data);
-      setMsg(response.data.message);
-      navigate("/login");
+      toast.success(response.data.message);
+      navigate("/");
     } catch (error) {
       console.error(error?.response);
       setErrors(error?.response?.data?.errors || "An error occurred");
@@ -42,7 +40,7 @@ export default function VerifyEmail() {
         email,
       });
       console.log(response.data);
-      setMsg(response.data.message);
+      toast.success(response.data.message);
     } catch (error) {
       console.error(error?.response);
       setErrors(error?.response?.data?.errors || "An error occurred");
@@ -75,7 +73,7 @@ export default function VerifyEmail() {
             <button
               type="button"
               onClick={resendVerification}
-              className="font-semibold text-indigo-600 hover:text-indigo-500"
+              className="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer"
             >
               Click here to resend it
             </button>
