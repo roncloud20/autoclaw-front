@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function VerifyEmail() {
-  const API_BASE_URL =
-    import.meta.env.REACT_APP_API_URL || "http://autoclaw-back.test";
+  const API_BASE_URL = import.meta.env.REACT_APP_API_URL || "http://autoclaw-back.test";
   const [SearchParams] = useSearchParams();
   const [errors, setErrors] = useState({});
   const [msg, setMsg] = useState("");
@@ -36,9 +36,12 @@ export default function VerifyEmail() {
   const resendVerification = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${API_BASE_URL}/api/resend-verification`, {
-        email,
-      });
+      const response = await axios.post(
+        `${API_BASE_URL}/api/resend-verification`,
+        {
+          email,
+        },
+      );
       console.log(response.data);
       toast.success(response.data.message);
     } catch (error) {
@@ -47,7 +50,6 @@ export default function VerifyEmail() {
       setMsg(error?.response?.data?.message || "An error occurred");
     }
   };
-
 
   console.log(errors);
 
